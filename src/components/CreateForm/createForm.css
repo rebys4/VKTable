@@ -1,0 +1,55 @@
+.create-form {
+    max-width: 400px;
+    margin-top: 32px;
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.create-form input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-form span {
+    color: #d32f2f;
+    font-size: 13px;
+}
+
+.create-form button {
+    margin-top: 12px;
+    padding: 10px 0;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.create-form button:disabled {
+    background: #bdbdbd;
+    cursor: not-allowed;
+}
+
+.status-message {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.status-message.success {
+    color: green;
+}
+
+.status-message.error {
+    color: #d32f2f;
+}

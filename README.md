@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Infinite Table React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Это веб-приложение на React + TypeScript, реализующее таблицу с бесконечной подгрузкой данных (infinite scroll) и форму для добавления новых записей. Данные хранятся и выдаются с помощью mock-сервера [json-server]. Приложение поддерживает произвольное количество полей в таблице (от 5 до 15), все поля валидируются.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Используемые технологии
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React** (с функциональными компонентами и хуками)
+- **TypeScript** (строгая типизация)
+- **Ant Design** (или другой UI-кит по выбору)
+- **React Query (@tanstack/react-query)** — асинхронные запросы, кэширование, infinite scroll
+- **react-hook-form** — удобная работа с формами и валидацией
+- **axios** — для HTTP-запросов
+- **json-server** — мок-API на локальной машине
+- **Jest + React Testing Library + MSW** — для тестирования, включая асинхронные сетевые операции
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## Архитектура приложения
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Таблица данных** — динамически строит колонки по получаемым данным. Данные подгружаются порциями (infinite loader) по мере прокрутки.
+- **Форма создания** — универсальная, поля описываются массивом, легко расширяется до любого количества полей. Используется валидация с react-hook-form.
+- **API слой** — отдельный модуль для общения с json-server (`axios`).
+- **Стейт-менеджмент** — глобальный state не используется, вся асинхроника и кэшинг через react-query, локальный state формы — через useForm (react-hook-form). Это объясняет выбор отказа от Redux/MobX: нет сложных глобальных зависимостей, бизнес-логика максимально изолирована.
+- **Тесты** — есть как минимум один тест с моком сетевого запроса через MSW (см. файл `CreateForm.test.tsx`).
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Как запустить
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Установите зависимости:**
+   ```bash
+   npm install
+   ```
+2. **Запустите json-server:**
+   ```bash
+    npx json-server --watch db.json --port 3001
+    ```
+3. **Запустите приложение:**
+   ```bash
+   npm start
+   ```
+4. **Запустите тесты**:
+    ```
+    npm test
+    ```
+   
+## Структуры данных
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```json
+{
+  "records": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "age": 25,
+      "address": "Berlin",
+      "phone": "+49 123 456789"
+    }
+  ]
+}
+```
