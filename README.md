@@ -1,4 +1,4 @@
-# Infinite Table React App
+# Infinite Table
 
 ## Описание
 

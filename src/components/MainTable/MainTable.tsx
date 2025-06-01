@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchRecords } from "../../api/recordsApi"
 import { Table } from "antd";
@@ -9,6 +9,11 @@ import { Record } from "../../types/Record";
 const PAGE_SIZE = 20;
 
 const InfiniteTable: React.FC = () => {
+
+  useEffect(() => {
+
+  }, []);
+
   const {
     data,
     fetchNextPage,

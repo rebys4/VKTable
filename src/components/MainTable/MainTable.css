@@ -1,0 +1,70 @@
+.main-table-container {
+    max-width: 1100px;
+    margin: 32px auto 0 auto;
+    background: #f8fafc;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(40, 40, 80, 0.05), 0 0.5px 0 #d3e3fd;
+    overflow-x: auto;
+    padding: 18px;
+    min-width: 320px;
+}
+
+.ant-table-wrapper {
+    background: transparent;
+}
+
+.ant-table {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.ant-table-thead>tr>th {
+    background: #e3f0ff;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 10px 12px;
+    border: none;
+}
+
+.ant-table-tbody>tr>td {
+    font-size: 16px;
+    padding: 10px 12px;
+    border: none;
+}
+
+.ant-table-tbody>tr:nth-child(even)>td {
+    background: #f6fafd;
+}
+
+.loading-row {
+    text-align: center;
+    padding: 18px 0;
+    color: #4b638a;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .main-table-container {
+        padding: 8px;
+        max-width: 98vw;
+    }
+
+    .ant-table {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-table-container {
+        padding: 0;
+        margin: 16px 0 0 0;
+    }
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        padding: 7px 6px;
+        font-size: 13.5px;
+    }
+}

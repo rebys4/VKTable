@@ -1,55 +1,91 @@
 .create-form {
-    max-width: 400px;
-    margin-top: 32px;
-    margin-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    margin: 36px auto 16px auto;
+    border-radius: 16px;
+    padding: 28px 22px 24px 22px;
+    box-shadow: 0 3px 14px rgba(40, 40, 90, 0.08), 0 1.5px 0 #d3e3fd;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 10px;
+    gap: 18px;
+    align-items: stretch;
 }
 
 .create-form input {
     width: 100%;
-    padding: 8px 12px;
-    font-size: 16px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 17px;
+    border: 1.5px solid #bcd1f8;
+    border-radius: 7px;
+    background: #f7fbff;
     box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.16s;
+}
+
+.create-form input:focus {
+    border-color: #1976d2;
+    background: #f3f8fe;
 }
 
 .create-form span {
-    color: #d32f2f;
+    color: #e44a4a;
     font-size: 13px;
+    margin-top: 2px;
+    min-height: 17px;
+    display: block;
 }
 
 .create-form button {
-    margin-top: 12px;
-    padding: 10px 0;
-    background: #1976d2;
+    margin-top: 6px;
+    padding: 13px 0;
+    background: linear-gradient(95deg, #4587f7 25%, #59c4fd 100%);
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(70, 120, 255, 0.06);
+    letter-spacing: 0.02em;
+    transition: background 0.22s, filter 0.15s;
 }
 
 .create-form button:disabled {
-    background: #bdbdbd;
+    background: #bdd4f8;
     cursor: not-allowed;
+    filter: grayscale(0.35) brightness(0.96);
 }
 
 .status-message {
-    margin-left: 10px;
-    font-size: 14px;
+    font-size: 15px;
+    margin: 10px 0 0 3px;
+    display: block;
 }
 
 .status-message.success {
-    color: green;
+    color: #2aae65;
 }
 
 .status-message.error {
-    color: #d32f2f;
+    color: #e44a4a;
+}
+
+@media (max-width: 600px) {
+    .create-form {
+        padding: 16px 7px 14px 7px;
+        max-width: 97vw;
+        gap: 11px;
+    }
+
+    .create-form input {
+        font-size: 15px;
+        padding: 9px 9px;
+    }
+
+    .create-form button {
+        font-size: 15px;
+        padding: 11px 0;
+    }
 }

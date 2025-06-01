@@ -5,4 +5,4 @@ export type Record = {
     age: number;
     address: string;
     phone: string;
-  };
+};
